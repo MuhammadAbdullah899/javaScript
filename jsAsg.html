@@ -1,0 +1,120 @@
+<!Document html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Assignment</title>
+	<script type="text/javascript">
+		var bill=0;
+		function showBill(){
+			alert("Your Total Bill is: "+bill);
+		}
+
+		function calculate(){
+
+			var container=document.getElementById('container');
+			
+
+			var dummyDiv=document.createElement("div");
+
+
+			var nameSpan = document.createElement("span");
+			nameSpan.innerHTML="Product Name: ";
+			nameSpan.setAttribute("style","font-weight:bold")
+			dummyDiv.appendChild(nameSpan);
+
+			var name = document.createElement("input");
+			name.setAttribute("type","text");
+			dummyDiv.appendChild(name);
+
+
+			var costSpan = document.createElement("span");
+			costSpan.innerHTML="Cost Per Unit: ";
+			costSpan.setAttribute("style","font-weight:bold")
+			dummyDiv.appendChild(costSpan);
+			
+			var cost = document.createElement("input");
+			cost.setAttribute("type","number");
+			cost.setAttribute("id","cost");
+			dummyDiv.appendChild(cost);
+
+
+			var numberSpan = document.createElement("span");
+			numberSpan.innerHTML="No of Products: ";
+			numberSpan.setAttribute("style","font-weight:bold")
+			dummyDiv.appendChild(numberSpan);
+
+			var number = document.createElement("input");
+			number.setAttribute("type","number");
+			cost.setAttribute("id","number");
+
+			dummyDiv.appendChild(number);
+
+			var btnAdd = document.createElement("input");
+			btnAdd.setAttribute("type","button");
+			btnAdd.setAttribute("value","Add");
+			
+			dummyDiv.appendChild(btnAdd);
+
+			var btnRemove = document.createElement("input");
+			btnRemove.setAttribute("type","button");
+			btnRemove.setAttribute("value","Remove");
+			btnRemove.onclick=function(){
+				container.removeChild(this.parentNode);
+				return false;
+			}
+			dummyDiv.appendChild(btnRemove);
+
+			var br = document.createElement("br");
+			dummyDiv.appendChild(br);
+			var br = document.createElement("br");
+			dummyDiv.appendChild(br);
+
+			container.appendChild(dummyDiv);
+
+
+
+			btnAdd.onclick=function(){
+				if(btnAdd){
+					var p = btnAdd.parentElement.childNodes[1].value;
+					var c = btnAdd.parentElement.childNodes[3].value;
+					var n = btnAdd.parentElement.childNodes[5].value;
+					if((p == "" || c == "" || n == "") || (p === NaN || c === NaN || n === NaN)){
+						alert("Please fill the required fields!");
+					}else{
+
+						c=parseFloat(c);
+						n=parseFloat(n);
+						if(Number.isInteger(c)===false || Number.isInteger(n)===false){
+							alert("Plaease Enter Integer");
+						}else{
+							bill = bill + (c * n);
+
+							var bil=document.getElementById("btnBill");
+							bil.setAttribute("style","display:inline");
+
+							container.removeChild(this.parentNode);
+							return false;
+						}
+					}
+				}
+			}
+		
+		}
+
+		
+	</script>
+	<style type="text/css">
+		.in{
+			font-weight: bold;
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<input type="button" class="in" id="btnAddPro" onclick="calculate()" value="Add a new Product">
+	<input type="button" class="in" onclick="document.getElementById('container').innerHTML = ''" value="Clear">
+	<input type="button" class="in" id="btnBill" onclick="showBill()" value="Calculate Total Bill" style="display: none">
+
+</body>
+</html>
