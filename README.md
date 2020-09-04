@@ -1,5 +1,5 @@
 # javaScript
-javaScript Assignment:
+This Repo contains the source code for the following assignment in javaScript:
 
 On start. There will only be one button named "Add a new Product", which on clicking, will add three fields(Text[Product Name], Number[Cost per unit], Number[Number of products]) on to the page(layout is not necessary).
 This process can be repeat several times.
